@@ -32,14 +32,20 @@ void push(Node *newNode){
 		head[key] = newNode;
 	}
 	else{
-		Node *temp = head[key];
-		while(temp->next){
-			if(strcmp(temp->next->name, newNode->name) < 0){
-				temp = temp->next;
-			} else break;
+		if(strcmp(head[key]->name, newNode->name) > 0){
+			newNode->next = head[key];
+			head[key] = newNode;
 		}
-		newNode->next = temp->next;
-		temp->next = newNode;
+		else{
+			Node *temp = head[key];
+			while(temp->next){
+				if(strcmp(temp->next->name, newNode->name) < 0){
+					temp = temp->next;
+				} else break;
+			}
+			newNode->next = temp->next;
+			temp->next = newNode;
+		}
 	}
 }
 
