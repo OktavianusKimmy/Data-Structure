@@ -96,8 +96,7 @@ int getKey(char taskName[]){
 	char keyString[20];
 	sprintf(keyString, "%d", key);
 	int len2 = strlen(keyString);
-	key = (keyString[len2-2] * 10) + (keyString[len2-1]);
-	
+	key = ((keyString[len2-2] - '0') * 10) + ((keyString[len2-1] - '0'));
 	printf("%d\n", key);
 	return key % MAX_SIZE;
 }
